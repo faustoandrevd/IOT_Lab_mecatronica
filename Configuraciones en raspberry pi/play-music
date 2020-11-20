@@ -1,0 +1,5 @@
+#!/bin/bash
+mount /dev/sda1 /mnt/music
+cd /mnt/music
+find -type f -iname "*.flac" -or -iname "*.ogg" -or -iname "*.wav" -or -iname "*.mp3" | sort -R > playlist
+mplayer -playlist /mnt/music/playlist -loop 0

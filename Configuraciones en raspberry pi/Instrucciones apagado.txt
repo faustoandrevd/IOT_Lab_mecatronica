@@ -1,0 +1,11 @@
+//asumiendo se descargón en la carpeta Downloads
+cd Downloads
+
+mv shutdown_Pi.py /home/pi
+
+sudo crontab -e
+
+//Añadir la linea
+@reboot python3 /home/pi/shutdown_Pi.py
+
+//Recordar: Ctrl x, y, enter.

@@ -1,0 +1,33 @@
+//Comenzamos con una sesion de root
+
+sudo su
+
+//se instala mplayer
+apt-get update
+apt-get install mplayer
+
+//uso de crontab
+crontab -e
+
+//crear un bash file
+nano /bin/play-music
+
+//agregar
+@reboot play-music
+
+//Este código va dentro del bash file
+
+#!/bin/bash
+mount /dev/sda1 /mnt/music
+cd /mnt/music
+find -type f -iname "*.flac" -or -iname "*.ogg" -or -iname "*.wav" -or -iname "*.mp3" | sort -R > playlist
+mplayer -playlist /mnt/music/playlist -loop 0
+
+//Recordar: Ctrl + X, y, enter en este orden.
+
+//hacerlo ejecutable
+chmod +x /bin/play-music
+
+//directorio para montar el usb, este debe estar montado en /dev/sda1
+mkdir /mnt/music
+
